@@ -1,0 +1,191 @@
+body {
+    background-color: #dee9ff;
+}
+
+.registration-form {
+    padding: 50px 0;
+}
+
+.registration-form form {
+    background-color: #fff;
+    max-width: 600px;
+    margin: auto;
+    padding: 50px 70px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+}
+
+.registration-form .form-icon {
+    text-align: center;
+    background-color: #5891ff;
+    border-radius: 50%;
+    font-size: 40px;
+    color: white;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    margin-bottom: 50px;
+    line-height: 100px;
+}
+
+.registration-form .item {
+    border-radius: 20px;
+    /* margin-bottom: 25px; */
+    padding: 24px 20px;
+}
+
+.registration-form .create-account {
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #5791ff;
+    border: none;
+    color: white;
+    margin-top: 20px;
+}
+
+.registration-form .social-media {
+    max-width: 600px;
+    background-color: #fff;
+    margin: auto;
+    padding: 35px 0;
+    text-align: center;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    color: #9fadca;
+    border-top: 1px solid #dee9ff;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+}
+
+.registration-form .social-icons {
+    margin-top: 30px;
+    margin-bottom: 16px;
+}
+
+.registration-form .social-icons a {
+    font-size: 23px;
+    margin: 0 3px;
+    color: #5691ff;
+    border: 1px solid;
+    border-radius: 50%;
+    width: 45px;
+    display: inline-block;
+    height: 45px;
+    text-align: center;
+    background-color: #fff;
+    line-height: 45px;
+}
+
+.registration-form .social-icons a:hover {
+    text-decoration: none;
+    opacity: 0.6;
+}
+
+@media (max-width: 576px) {
+    .registration-form form {
+        padding: 50px 20px;
+    }
+
+    .registration-form .form-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 30px;
+        line-height: 70px;
+    }
+}
+
+/* Error 404 page css */
+
+* {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  
+  body {
+    padding: 0;
+    margin: 0;
+  }
+  
+  #notfound {
+    position: relative;
+    height: 100vh;
+    background-color: #222;
+  }
+  
+  #notfound .notfound {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  
+  .notfound {
+    max-width: 460px;
+    width: 100%;
+    text-align: center;
+    line-height: 1.4;
+  }
+  
+  .notfound .notfound-404 {
+    height: 158px;
+    line-height: 153px;
+  }
+  
+  .notfound .notfound-404 h1 {
+    font-family: 'Josefin Sans', sans-serif;
+    color: #222;
+    font-size: 220px;
+    letter-spacing: 10px;
+    margin: 0px;
+    font-weight: 700;
+    text-shadow: 2px 2px 0px #c9c9c9, -2px -2px 0px #c9c9c9;
+  }
+  
+  .notfound .notfound-404 h1>span {
+    text-shadow: 2px 2px 0px #ffab00, -2px -2px 0px #ffab00, 0px 0px 8px #ff8700;
+  }
+  
+  .notfound p {
+    font-family: 'Josefin Sans', sans-serif;
+    color: #c9c9c9;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 0px;
+    margin-bottom: 15px;
+  }
+  
+  .notfound a {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: transparent;
+    color: #c9c9c9;
+    border: 2px solid #c9c9c9;
+    display: inline-block;
+    padding: 10px 25px;
+    font-weight: 700;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+  }
+  
+  .notfound a:hover {
+    color: #ffab00;
+    border-color: #ffab00;
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .notfound .notfound-404 {
+      height: 122px;
+      line-height: 122px;
+    }
+  
+    .notfound .notfound-404 h1 {
+        font-size: 122px;
+    }
+  }
+  
