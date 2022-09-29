@@ -73,11 +73,26 @@ $route['404'] = 'home/err404';
 // backend pages
 
 
-$route['admin'] = 'admin/signin';
-$route['admin/signup'] = 'admin/admin/signup';
-$route['admin/dashboard'] = 'admin/admin/dashboard';
-$route['admin/addcategory'] = 'admin/admin/add_category';
-$route['admin/category'] = 'admin/admin/display_category';
-$route['admin/addproduct'] = 'admin/admin/add_prodcut';
-$route['admin/products'] = 'admin/admin/display_product';
+$route['admin'] = 'admin/login';
+
+$route['accounts/dashboard'] = 'private/admin/index';
+
+$route['accounts/logout'] = 'private/admin/logout';
+
+$route['accounts/category'] = 'private/admin/category';
+$route['accounts/add_category'] = 'private/admin/add_category';
+$route['accounts/edit_category/(:num)'] = 'private/admin/add_category/$1';
+
+$route['accounts/sub_category'] = 'private/admin/sub_category';
+$route['accounts/add_subcategory'] = 'private/admin/add_sub_category';
+$route['accounts/edit_subcategory/(:num)'] = 'private/admin/add_sub_category/$1';
+
+$route['accounts/add_product'] = 'private/product/add_product';
+$route['accounts/add_product/(:num)'] = 'private/product/add_product/$1';
+$route['accounts/products'] = 'private/product/';
+$route['accounts/getsubcat'] = 'private/product/getsubcat';
+
+
+
+
 $route['translate_uri_dashes'] = FALSE;

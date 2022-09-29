@@ -39,7 +39,7 @@ class Admin extends CI_Controller
                 'created' => $date,
 
             );
-            $this->Admin_model->signup('admin_login',$data);
+            $this->Admin_model->signup('admin_login', $data);
         } else {
             $this->load->view('admin/signup');
         }
@@ -53,24 +53,24 @@ class Admin extends CI_Controller
         $this->load->view('admin/dashboard', ['usrname' => $usrname, 'uname' => $uname, 'usrid' => $uid]);
     }
 
-    public function add_category()
-    {
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-        $d = date("Y-m-d H:i:s");
+    // public function add_category()
+    // {
+    //     $this->load->helper('form');
+    //     $this->load->library('form_validation');
+    //     $d = date("Y-m-d H:i:s");
 
-        $this->form_validation->set_rules('cat_types', 'Product Title', 'trim|required');
-        $this->form_validation->set_rules('cat_name', 'Product Keywords', 'trim|required|alpha');
-        $this->form_validation->set_rules('cat_discription', 'Product discription', 'trim|required');
-        if ($this->form_validation->run()) {
-            $cat_types = $this->input->post('cat_types');
-            $cat_name = $this->input->post('cat_name');
-            $cat_discription = $this->input->post('cat_discription');
-            $this->Admin_model->add_categorym($cat_types, $cat_name, $cat_discription, $d);
-        } else {
-            $this->load->view('admin/add_category');
-        }
-    }
+    //     $this->form_validation->set_rules('cat_types', 'Product Title', 'trim|required');
+    //     $this->form_validation->set_rules('cat_name', 'Product Keywords', 'trim|required|alpha');
+    //     $this->form_validation->set_rules('cat_discription', 'Product discription', 'trim|required');
+    //     if ($this->form_validation->run()) {
+    //         $cat_types = $this->input->post('cat_types');
+    //         $cat_name = $this->input->post('cat_name');
+    //         $cat_discription = $this->input->post('cat_discription');
+    //         $this->Admin_model->add_categorym($cat_types, $cat_name, $cat_discription, $d);
+    //     } else {
+    //         $this->load->view('admin/add_category');
+    //     }
+    // }
 
 
     public function display_category()

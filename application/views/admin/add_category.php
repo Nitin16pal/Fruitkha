@@ -1,92 +1,78 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>Admin Dashboard</title>
-    <?php include "inc-css.php"; ?>
-
-</head>
-
-
-<body class="sidebar-fixed sidebar-dark header-light header-fixed" id="body">
-
-
-    <div class="mobile-sticky-body-overlay"></div>
-
-    <div class="wrapper">
-
-        <!--
-          ====================================
-          ——— LEFT SIDEBAR WITH FOOTER
-          =====================================
-        -->
-        <?php include "sidebar.php"; ?>
-        <div class="page-wrapper">
-            <!-- Header -->
-            <?php include "header.php"; ?>
-            <!-- Header -->
-            <div class="content-wrapper">
-                <div class="content">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card card-default">
-                                <div class="card-header card-header-border-bottom">
-                                    <h2>Add Category</h2>
-                                </div>
-                                <div class="card-body">
-                                
-
-                                    <!--error message -->
-                                    
-                                    <form method="POST" enctype="multipart/form-data">
-                                        <div class="row">
-                                            
-                                        <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="cat_types">Type Category</label>
-                                                    <select class="form-control" id="cat_types" name="cat_types">
-                                                        <option value="">Please Select</option>
-                                                        <option value="Organic">Organic</option>
-                                                        <option value="Inorganic">Inorganic</option>
-                                                    </select>
-                                                    <?php echo form_error('cat_types', "<div style='color:red'>", "</div>"); ?>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="fname">Category Name</label>
-                                                    <input type="text" class="form-control" name="cat_name" placeholder="Enter Category">
-                                                <?php echo form_error('cat_name', "<div style='color:red'>", "</div>"); ?>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="fname">Discription</label>
-                                                    <input type="text" class="form-control" name="cat_discription" placeholder="Enter Discription">
-                                                <?php echo form_error('cat_discription', "<div style='color:red'>", "</div>"); ?>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="form-footer pt-5 border-top">
-                                            <button type="submit" class="btn btn-primary btn-default">Submit form</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<div class="midde_cont">
+    <div class="container-fluid">
+        <div class="row column_title">
+            <div class="col-md-12">
+                <div class="page_title">
+                    <h2><?= $section ?> Category</h2>
                 </div>
             </div>
         </div>
-    </div>
-    <?php include "inc-script.php" ?>
-</body>
 
-</html>
+        <!-- row -->
+        <div class="row column1">
+            <div class="col-md-12">
+                <div class="white_shd full margin_bottom_30">
+                    <div class="full graph_head">
+                        <a href="<?php echo base_url('accounts/category') ?>" class="btn btn-primary btn-xs float-right">Back</a>
+                    </div>
+                    <div class="full price_table padding_infor_info">
+                        <form method="POST" enctype="multipart/form-data">
+                            <?php if($this->session->flashdata('cerror')){?>
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                               <?= $this->session->flashdata('cerror'); ?>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <?php }?>
+                            <div class="form-row mb-3">
+                                <div class="col-md-6 form-group">
+                                    <label class="label_field">Meta Title</label>
+                                    <input type="text" name="meta_title" id="meta_title" value="<?= set_value('meta_title',$cat_title); ?>" class="form-control <?php echo (form_error('meta_title') != "") ? 'is-invalid' : ''; ?>" />
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="label_field">Meta Keyword</label>
+                                    <input type="text" name="meta_keyword" id="meta_keyword" value="<?= set_value('meta_keyword',$cat_keyword); ?>" class="form-control <?php echo (form_error('meta_keyword') != "") ? 'is-invalid' : ''; ?>" />
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <label class="label_field">Meta Description</label>
+                                    <textarea name="meta_desc" id="meta_desc" class="form-control <?php echo (form_error('meta_desc') != "") ? 'is-invalid' : ''; ?>" rows="3"> <?= set_value('meta_desc',$cat_desc); ?></textarea>
+                                </div>
+
+                                <div class="col-md-6 form-group">
+                                    <label class="label_field">Category Type</label>
+                                    <select name="category_type" id="category_type" class="form-control <?php echo (form_error('category_type') != "") ? 'is-invalid' : ''; ?>">
+                                        <option value="">Select category Type</option>
+                                        <option value="Organic">Organic</option>
+                                        <option value="In-Organic">In-Organic</option>
+                                        <!-- <?php foreach ($data as $categ) : ?>
+                                            <option <?php echo set_select('category_type', $categ->id, false); ?> value="<?= $categ->id; ?>"><?= $categ->category_name; ?></option>
+                                        <?php endforeach; ?> -->
+                                    </select>
+                                    <?php echo form_error(' category_type'); ?>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="label_field">Product Category</label>
+                                    <input type="text" name="category" id="category" value="<?php echo set_value('category', $category_name); ?>" class="form-control <?php echo (form_error('category') != "") ? 'is-invalid' : ''; ?>" />
+                                    <?php echo form_error('category', "<span id='category_error' class='field_error text-danger d-block'>", "</span>"); ?>
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <label class="label_field">Product Description</label>
+                                    <textarea name="product_desc" id="product_desc" class="form-control <?php echo (form_error('product_desc') != "") ? 'is-invalid' : ''; ?>" rows="3"> <?= set_value('product_desc',$product_desc); ?></textarea>
+                                    <?php echo form_error('product_desc', "<span id='product_desc' class='field_error text-danger d-block'>", "</span>"); ?>
+                                </div>
+                            </div>
+
+                            <div class="form-group margin_0">
+                                <input type="hidden" name="cat_id" id="cat_id" value="<?= $id ?>">
+                                <button class="main_bt" type="submit">Submit</button>
+                            </div>
+                            <span id="result" class="text-danger mt-4 d-block"></span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end dashboard inner -->
+    </div>

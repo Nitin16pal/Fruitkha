@@ -1,110 +1,38 @@
-<header class="main-header " id="header">
-  <nav class="navbar navbar-static-top navbar-expand-lg">
-    <!-- Sidebar toggle button -->
-    <button id="sidebar-toggler" class="sidebar-toggle">
-      <span class="sr-only">Toggle navigation</span>
-    </button>
-    <!-- search form -->
-    <div class="search-form d-none d-lg-inline-block">
-      <div class="input-group">
-        <button type="button" name="search" id="search-btn" class="btn btn-flat">
-          <i class="mdi mdi-magnify"></i>
-        </button>
-        <input type="text" name="query" id="search-input" class="form-control" placeholder="'button', 'chart' etc." autofocus autocomplete="off" />
-      </div>
-      <div id="search-results-container">
-        <ul id="search-results"></ul>
-      </div>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
 
-    <div class="navbar-right ">
-      <ul class="nav navbar-nav">
-        <!-- Github Link Button -->
-        <li class="github-link mr-3">
-          <a class="btn btn-outline-secondary btn-sm" href="#" target="_blank">
-            <span class="d-none d-md-inline-block mr-2">Ecommerce Dashboard</span>
-            <i class="mdi mdi-github-circle"></i>
-          </a>
-        </li>
-        <li class="dropdown notifications-menu">
-          <button class="dropdown-toggle" data-toggle="dropdown">
-            <i class="mdi mdi-bell-outline"></i>
-          </button>
-          <ul class="dropdown-menu dropdown-menu-right">
-            <li class="dropdown-header">You have 5 notifications</li>
-            <li>
-              <a href="#">
-                <i class="mdi mdi-account-plus"></i> New user registered
-                <span class=" font-size-12 d-inline-block float-right"><i class="mdi mdi-clock-outline"></i> 10 AM</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="mdi mdi-account-remove"></i> User deleted
-                <span class=" font-size-12 d-inline-block float-right"><i class="mdi mdi-clock-outline"></i> 07 AM</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="mdi mdi-chart-areaspline"></i> Sales report is ready
-                <span class=" font-size-12 d-inline-block float-right"><i class="mdi mdi-clock-outline"></i> 12 PM</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="mdi mdi-account-supervisor"></i> New client
-                <span class=" font-size-12 d-inline-block float-right"><i class="mdi mdi-clock-outline"></i> 10 AM</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="mdi mdi-server-network-off"></i> Server overloaded
-                <span class=" font-size-12 d-inline-block float-right"><i class="mdi mdi-clock-outline"></i> 05 AM</span>
-              </a>
-            </li>
-            <li class="dropdown-footer">
-              <a class="text-center" href="#"> View All </a>
-            </li>
-          </ul>
-        </li>
-        <!-- User Account -->
-        <li class="dropdown user-menu">
-          <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-            <img src=<?php echo base_url("ad_assets/img/user/user.webp") ?> class="user-image" alt="User Image" />
-            <span class="d-none d-lg-inline-block"><?= $uname = $this->session->userdata('uname'); ?></span>
-          </button>
-          <ul class="dropdown-menu dropdown-menu-right">
-            <!-- User image -->
-            <li class="dropdown-header">
-              <img src=<?php echo base_url("ad_assets/img/user/user.webp") ?> class="img-circle" alt="User Image" />
-              <div class="d-inline-block">
-                <?= $uname = $this->session->userdata('uname'); ?> <small class="pt-1"><?= $uname = $this->session->userdata('uname'); ?></small>
-              </div>
-            </li>
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>FruitKha E-Commerce Fresh Fruits Vegiateble and Driefruites</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- site icon -->
+    <!-- <link rel="icon" href="<?php echo base_url("assets/admin/images/favicon.png") ?>" type="image/png" /> -->
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="<?php echo base_url('assets/admin/css/bootstrap.min.css') ?>" />
+    <!-- site css -->
+    <link rel="stylesheet" href="<?php echo base_url("assets/admin/css/style.css") ?>" />
+    <!-- responsive css -->
+    <link rel="stylesheet" href="<?php echo base_url("assets/admin/css/responsive.css") ?>" />
+    <!-- select bootstrap -->
+    <link rel="stylesheet" href="<?php echo base_url("assets/admin/css/bootstrap-select.css") ?>" />
+    <!-- scrollbar css -->
+    <link rel="stylesheet" href="<?php echo base_url("assets/admin/css/perfect-scrollbar.css") ?>" />
+    <!-- Datatable -->
+    <link href="<?php echo base_url("assets/admin/js/datatables/dataTables.bootstrap4.min.css"); ?>" rel="stylesheet">
+    <!-- custom css -->
+    <link rel="stylesheet" href="<?php echo base_url("assets/admin/css/custom.css") ?>" />
+    <script src="<?php echo base_url("assets/admin/js/jquery.min.js") ?>"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
 
-            <li>
-              <a href="profile.html">
-                <i class="mdi mdi-account"></i> My Profile
-              </a>
-            </li>
-            <li>
-              <a href="email-inbox.html">
-                <i class="mdi mdi-email"></i> Message
-              </a>
-            </li>
-            <li>
-              <a href="#"> <i class="mdi mdi-diamond-stone"></i> Projects </a>
-            </li>
-            <li>
-              <a href="#"> <i class="mdi mdi-settings"></i> Account Setting </a>
-            </li>
-
-            <li class="dropdown-footer">
-              <a href="<?= base_url('admin/logout') ?>"> <i class="mdi mdi-logout"></i> Log Out </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</header>
+<body class="inner_page login">
+    <div class="full_container">
+        <div class="inner_container">
