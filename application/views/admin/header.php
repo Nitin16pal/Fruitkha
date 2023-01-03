@@ -30,6 +30,7 @@
     <!-- custom css -->
     <link rel="stylesheet" href="<?php echo base_url("assets/admin/css/custom.css") ?>" />
     <script src="<?php echo base_url("assets/admin/js/jquery.min.js") ?>"></script>
+    <script src="<?php echo base_url("assets/admin/js/ajaxjs.js") ?>"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 

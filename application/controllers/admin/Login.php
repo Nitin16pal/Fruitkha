@@ -10,7 +10,7 @@ class Login extends CI_Controller
             redirect('accounts/dashboard');
     }
 
-    
+
 
     public function index()
     {
@@ -22,17 +22,18 @@ class Login extends CI_Controller
         if ($this->form_validation->run()) {
             $username = $this->input->post('username');
             $password = $this->input->post('password');
-            $this->load->model('Signin_m');
-            $validate = $this->Signin_m->index($username, $password);
+            $this->load->model('admin/AdminModel');
+            $validate = $this->AdminModel->check_admin($username, $password);
+
             if ($validate) {
-                $this->session->set_userdata('uid', $validate->uid);
-                $this->session->set_userdata('uname', $validate->name);
-                $this->session->set_userdata('username', $validate->username);
+                $this->session->set_userdata('uid', $validate['0']->uid);
+                $this->session->set_userdata('uname', $validate['0']->name);
+                $this->session->set_userdata('username', $validate['0']->username);
                 redirect('accounts/dashboard');
             } else {
-                $nitn=$this->session->set_flashdata('crederror', 'Invalid Credential Please Try Again');
+                $nitn = $this->session->set_flashdata('crederror', 'Invalid Credential Please Try Again');
                 $this->load->view('admin/header');
-                $this->load->view('admin/login',$nitn);
+                $this->load->view('admin/login', $nitn);
             }
         } else {
             $this->load->view('admin/header');

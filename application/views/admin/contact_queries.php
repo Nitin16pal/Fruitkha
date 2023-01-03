@@ -26,36 +26,34 @@
                                         <thead class="thead-dark">
                                             <tr>
                                                 <th>#</th>
-                                                <th>IP</th>
                                                 <th>First Name</th>
-                                                <th>Last Name</th>
                                                 <th>Email</th>
                                                 <th>Mobile</th>
+                                                <th>Message</th>
                                                 <th>Added On</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            if (isset($data['0'])) {
+                                            if (isset($cdata['0'])) {
                                                 $i = 1;
-                                                foreach ($data as $list) {
+                                                foreach ($cdata as $list) {
                                             ?>
                                                     <tr>
-                                                        <td><?= $i ?></td>
-                                                        <td><?= $list->ip ?></td>
-                                                        <td><?= $list->fname ?></td>
-                                                        <td><?= $list->lname ?></td>
+                                                        <td><?= $i++ ?></td>
+                                                        <td><?= $list->name ?></td>
                                                         <td><?= $list->email ?></td>
                                                         <td><?= $list->mobile ?></td>
-                                                        <td><?= date('Y-m-d', strtotime($list->created_on)) ?></td>
+                                                        <td><?= $list->message ?></td>
+                                                        <td><?= date('Y-m-d', strtotime($list->created)) ?></td>
                                                         <td>
                                                             <ul class="list-inline d-flex justify-content-end">
-                                                                <li><a href="javascript:void(0);" onclick="deleteQuery(<?= $list->id ?>)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a></li>
+                                                                <li><a href="<?= base_url('private/admin/delete/contactus/') . $list->id . '/id/contact-enquiries'  ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a></li>
                                                             </ul>
                                                         </td>
                                                     </tr>
-                                                <?php $i++;
+                                                <?php
                                                 }
                                             } else { ?>
                                                 <tr>
@@ -74,11 +72,3 @@
         </div>
         <!-- end dashboard inner -->
     </div>
-    
-    <script>
-        function deleteQuery(id) {
-            if (confirm("Are you sure you want to delete this query?")) {
-                window.location.href = "<?= base_url('private/contact/delete_contact_query/') ?>" + id;
-            }
-        }
-    </script>

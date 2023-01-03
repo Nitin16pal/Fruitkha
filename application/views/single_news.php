@@ -1,43 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
-
-	<!-- title -->
-	<title>Single News</title>
-
-	
-	<?php include "inc-css.php"?>
-	
-
-</head>
-<body>
-	
-	
 <?php include "header.php"?>
-
-	<!-- search area -->
-	<div class="search-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<span class="close-btn"><i class="fas fa-window-close"></i></span>
-					<div class="search-bar">
-						<div class="search-bar-tablecell">
-							<h3>Search For:</h3>
-							<input type="text" placeholder="Keywords">
-							<button type="submit">Search <i class="fas fa-search"></i></button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end search arewa -->
-	
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">
 		<div class="container">
@@ -124,32 +85,32 @@
 						<div class="recent-posts">
 							<h4>Recent Posts</h4>
 							<ul>
-								<li><a href="<?php echo base_url('single_news') ?>">You will vainly look for fruit on it in autumn.</a></li>
-								<li><a href="<?php echo base_url('single_news') ?>">A man's worth has its season, like tomato.</a></li>
-								<li><a href="<?php echo base_url('single_news') ?>">Good thoughts bear good fresh juicy fruit.</a></li>
-								<li><a href="<?php echo base_url('single_news') ?>">Fall in love with the fresh orange</a></li>
-								<li><a href="<?php echo base_url('single_news') ?>">Why the berries always look delecious</a></li>
+								<li><a href="<?php echo base_url('single-news') ?>">You will vainly look for fruit on it in autumn.</a></li>
+								<li><a href="<?php echo base_url('single-news') ?>">A man's worth has its season, like tomato.</a></li>
+								<li><a href="<?php echo base_url('single-news') ?>">Good thoughts bear good fresh juicy fruit.</a></li>
+								<li><a href="<?php echo base_url('single-news') ?>">Fall in love with the fresh orange</a></li>
+								<li><a href="<?php echo base_url('single-news') ?>">Why the berries always look delecious</a></li>
 							</ul>
 						</div>
 						<div class="archive-posts">
 							<h4>Archive Posts</h4>
 							<ul>
-								<li><a href="<?php echo base_url('single_news') ?>">JAN 2019 (5)</a></li>
-								<li><a href="<?php echo base_url('single_news') ?>">FEB 2019 (3)</a></li>
-								<li><a href="<?php echo base_url('single_news') ?>">MAY 2019 (4)</a></li>
-								<li><a href="<?php echo base_url('single_news') ?>">SEP 2019 (4)</a></li>
-								<li><a href="<?php echo base_url('single_news') ?>">DEC 2019 (3)</a></li>
+								<li><a href="<?php echo base_url('single-news') ?>">JAN 2019 (5)</a></li>
+								<li><a href="<?php echo base_url('single-news') ?>">FEB 2019 (3)</a></li>
+								<li><a href="<?php echo base_url('single-news') ?>">MAY 2019 (4)</a></li>
+								<li><a href="<?php echo base_url('single-news') ?>">SEP 2019 (4)</a></li>
+								<li><a href="<?php echo base_url('single-news') ?>">DEC 2019 (3)</a></li>
 							</ul>
 						</div>
 						<div class="tag-section">
 							<h4>Tags</h4>
 							<ul>
-								<li><a href="<?php echo base_url('single_news') ?>">Apple</a></li>
-								<li><a href="<?php echo base_url('single_news') ?>">Strawberry</a></li>
-								<li><a href="<?php echo base_url('single_news') ?>">BErry</a></li>
-								<li><a href="<?php echo base_url('single_news') ?>">Orange</a></li>
-								<li><a href="<?php echo base_url('single_news') ?>">Lemon</a></li>
-								<li><a href="<?php echo base_url('single_news') ?>">Banana</a></li>
+								<li><a href="<?php echo base_url('single-news') ?>">Apple</a></li>
+								<li><a href="<?php echo base_url('single-news') ?>">Strawberry</a></li>
+								<li><a href="<?php echo base_url('single-news') ?>">BErry</a></li>
+								<li><a href="<?php echo base_url('single-news') ?>">Orange</a></li>
+								<li><a href="<?php echo base_url('single-news') ?>">Lemon</a></li>
+								<li><a href="<?php echo base_url('single-news') ?>">Banana</a></li>
 							</ul>
 						</div>
 					</div>

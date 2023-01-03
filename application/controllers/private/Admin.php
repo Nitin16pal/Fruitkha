@@ -1,4 +1,5 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
+date_default_timezone_set('Asia/Kolkata');
 class Admin extends CI_Controller
 {
 	public function __construct()
@@ -11,10 +12,6 @@ class Admin extends CI_Controller
 	public function index()
 	{
 		$result = array();
-		// $result['totalblogs'] = $this->AdminModel->all_row_count('blogs');
-		// $result['totalvideos'] = $this->AdminModel->all_row_count('blogs_video');
-		// $result['totalmagazines'] = $this->AdminModel->all_row_count('magazine');
-		// $result['totalmagazinequeries'] = $this->AdminModel->all_row_count('magazine_query');
 
 		$this->load->view('admin/header');
 		$this->load->view('admin/sidebar');
@@ -143,6 +140,9 @@ class Admin extends CI_Controller
 		if (empty($id)) {
 			$this->form_validation->set_rules('sub_category', 'Sub-Category', 'trim|required|is_unique[product_category.cat_name]');
 			$this->form_validation->set_message('is_unique', 'This Sub-Category is already exists.');
+		}else{
+			$this->form_validation->set_rules('sub_category', 'Sub-Category', 'trim|required');
+
 		}
 
 		if ($this->form_validation->run()) {
@@ -211,7 +211,7 @@ class Admin extends CI_Controller
 				$data['section'] = 'Add';
 				$data['id'] = '';
 			}
-			$data['gtcat'] = $this->load->AdminModel->get_active_category('product_category', 'cat_id','catstatus');
+			$data['gtcat'] = $this->load->AdminModel->get_active_category('product_category', 'cat_id', 'catstatus');
 			$this->load->view('admin/add_sub_category', $data);
 			$this->load->view('admin/footer');
 		}
@@ -238,5 +238,19 @@ class Admin extends CI_Controller
 	{
 		$this->AdminModel->delete_data($table, $id, $colidname);
 		redirect(base_url() . 'accounts/' . $pagename);
+	}
+
+
+	// Display Contact Us query
+
+	// main Categories
+	public function contact_us()
+	{
+
+		$result['cdata'] = $this->AdminModel->get_category('contactus', 'id');
+		$this->load->view('admin/header');
+		$this->load->view('admin/sidebar');
+		$this->load->view('admin/contact_queries', $result);
+		$this->load->view('admin/footer');
 	}
 }

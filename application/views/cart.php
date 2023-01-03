@@ -1,41 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
-
-	<!-- title -->
-	<title>Cart</title>
-
-		
-	<?php include "inc-css.php"?>
-</head>
-<body>
-	
-	
-<?php include "header.php"?>
-
-	<!-- search area -->
-	<div class="search-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<span class="close-btn"><i class="fas fa-window-close"></i></span>
-					<div class="search-bar">
-						<div class="search-bar-tablecell">
-							<h3>Search For:</h3>
-							<input type="text" placeholder="Keywords">
-							<button type="submit">Search <i class="fas fa-search"></i></button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end search arewa -->
-	
+	<?php include "header.php"; ?>
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">
 		<div class="container">
@@ -68,31 +31,26 @@
 									<th class="product-total">Total</th>
 								</tr>
 							</thead>
-							<tbody>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src='<?php echo base_url("assets/img/products/product-img-1.jpg")?>' alt=""></td>
-									<td class="product-name">Strawberry</td>
-									<td class="product-price">$85</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
-								</tr>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src='<?php echo base_url("assets/img/products/product-img-2.jpg")?>' alt=""></td>
-									<td class="product-name">Berry</td>
-									<td class="product-price">$70</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
-								</tr>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src='<?php echo base_url("assets/img/products/product-img-3.jpg")?>' alt=""></td>
-									<td class="product-name">Lemon</td>
-									<td class="product-price">$35</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
-								</tr>
+							<tbody id="detail_cart">
+								<?php
+								if (isset($cartdata[0])) {
+									foreach ($cartdata as $items) { ?>
+										<tr class="table-body-row">
+											<td class="product-remove"><a href="#" class="romove_cart" id="<?= $items->crt_id ?>"><i class="far fa-window-close"></i></a></td>
+											<td class="product-image"><img src="<?= base_url('assets/img/products/product-img-1.jpg') ?>" alt=""></td>
+											<td class="product-name"><?= $items->pd_name ?></td>
+											<td class="product-price"><?= $items->pd_price ?></td>
+											<td class="product-quantity"><input type="number" placeholder="1" min="1" id="<?= $items->crt_id ?>" data-price="<?= $items->pd_price ?>" data-product_id="<?= $items->pd_id ?>" class='update-cart' value="<?= $items->pd_quantity ?>"></td>
+											<td class="product-total" id="product-total<?= $items->crt_id ?>"><?= $total = ($items->pd_price * $items->pd_quantity) ?></td>
+										</tr>
+									<?php
+										$subtotal = $subtotal + $total;
+									}
+								} else { ?>
+									<tr class="table-body-row">
+										<td class="product-total" colspan="6">Your cart is empty.</td>
+									</tr>
+								<?php } ?>
 							</tbody>
 						</table>
 					</div>
@@ -100,7 +58,7 @@
 
 				<div class="col-lg-4">
 					<div class="total-section">
-						<table class="total-table">
+						<table class="total-table" id="cart-price">
 							<thead class="total-table-head">
 								<tr class="table-total-row">
 									<th>Total</th>
@@ -110,31 +68,35 @@
 							<tbody>
 								<tr class="total-data">
 									<td><strong>Subtotal: </strong></td>
-									<td>$500</td>
+									<td id="subtotal">$<?= $subtotal; ?></td>
 								</tr>
 								<tr class="total-data">
 									<td><strong>Shipping: </strong></td>
-									<td>$45</td>
+									<?php if ($subtotal < 500) {
+										$shipcharg = 45;
+									} ?>
+									<td id="shipcharg">$<?= $shipcharg; ?></td>
 								</tr>
 								<tr class="total-data">
 									<td><strong>Total: </strong></td>
-									<td>$545</td>
+									<td id="prtotal">$<?= $total = $subtotal + $shipcharg; ?></td>
 								</tr>
 							</tbody>
 						</table>
 						<div class="cart-buttons">
-							<a href="<?php echo base_url('cart') ?>" class="boxed-btn">Update Cart</a>
-							<a href="<?php echo base_url('checkout') ?>" class="boxed-btn black">Check Out</a>
+							<a href="<?= base_url('cart') ?>" class="boxed-btn " <?= (empty($subtotal)) ? 'style="pointer-events:none;"' : '' ?>>Update Cart</a>
+							<a href="<?= base_url('checkout') ?>" class="boxed-btn black" <?= (empty($subtotal)) ? 'style="pointer-events:none;"' : '' ?>>Check Out</a>
 						</div>
 					</div>
 
 					<div class="coupon-section">
 						<h3>Apply Coupon</h3>
 						<div class="coupon-form-wrap">
-							<form action="index.html">
-								<p><input type="text" placeholder="Coupon"></p>
-								<p><input type="submit" value="Apply"></p>
-							</form>
+							<span class="couponerror text-danger"></span>
+							<!-- <form id="couponform"> -->
+								<p><input type="text" name="couponid" id="couponid" placeholder="Coupon"></p>
+								<p><a class="boxed-btn mt-4" id="couponsubmit">Apply</a></p>
+							<!-- </form> -->
 						</div>
 					</div>
 				</div>
@@ -143,39 +105,13 @@
 	</div>
 	<!-- end cart -->
 
-	<!-- logo carousel -->
-	<div class="logo-carousel-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-				<div class="logo-carousel-inner">
-						<div class="single-logo-item">
-							<img src="<?php echo base_url('assets/img/company-logos/1.png') ?>" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="<?php echo base_url('assets/img/company-logos/2.png') ?>" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="<?php echo base_url('assets/img/company-logos/3.png') ?>" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="<?php echo base_url('assets/img/company-logos/4.png') ?>" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="<?php echo base_url('assets/img/company-logos/5.png') ?>" alt="">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end logo carousel -->
+	<?php include "inc-brandlogo.php" ?>
+	<?php include "footer.php" ?>
+	<?php include "inc-script.php" ?>
+	<script>
 
-		
-	<?php include "footer.php"?>
+	</script>
 
-	
-	<?php include "inc-script.php"?>
+	</body>
 
-</body>
-</html>
+	</html>

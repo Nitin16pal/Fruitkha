@@ -29,7 +29,7 @@
                 </ul>
             </li>
             <li><a href="<?php echo base_url('accounts/products/')?>"><i class="fa fa-files-o yellow_color"></i> <span>Products</span></a></li>
-            <li><a href="<?php echo base_url('accounts/blogs_video/')?>"><i class="fa fa-video-camera red_color"></i> <span>BMR TV</span></a></li>
+            <li><a href="<?php echo base_url('accounts/coupon/')?>"><i class="fa fa-video-camera red_color"></i> <span>Coupon</span></a></li>
             <li><a href="<?php echo base_url('accounts/banner_ads/')?>"><i class="fa fa-photo green_color"></i> <span>Ad Banners</span></a></li>
             <li><a href="<?php echo base_url('accounts/media')?>"><i class="fa fa-photo green_color"></i> <span>Media</span></a></li>
             <li>

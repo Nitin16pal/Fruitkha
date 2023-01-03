@@ -3,7 +3,7 @@
         <div class="row column_title">
             <div class="col-md-12">
                 <div class="page_title">
-                    <h2>Blogs</h2>
+                    <h2>Product List</h2>
                 </div>
             </div>
         </div>
@@ -19,7 +19,7 @@
             <div class="col-md-12">
                 <div class="white_shd full margin_bottom_30">
                     <div class="full graph_head">
-                        <a href="<?php echo base_url('accounts/add_blog') ?>" class="btn btn-success btn-xs">Add Blog</a>
+                        <a href="<?php echo base_url('accounts/add_product') ?>" class="btn btn-success btn-xs">Add Products</a>
                     </div>
                     <div class="full price_table padding_infor_info">
                         <div class="row">
@@ -31,87 +31,63 @@
                                                 <th>#</th>
                                                 <th>Category</th>
                                                 <th>Sub Category</th>
+                                                <th>Product Name</th>
+                                                <th>Actual Price</th>
+                                                <th>Discounts Price</th>
                                                 <th>Image</th>
-                                                <th>Title</th>
                                                 <th>Add Gallery</th>
                                                 <th>Uploaded By</th>
-                                                <th>Show on Homepage</th>
                                                 <th>Added On</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            if (isset($data['0'])) {
+                                            if (isset($products['0'])) {
                                                 $i = 1;
-                                                foreach ($data as $list) {
+                                                foreach ($products as $list) {
                                             ?>
                                                     <tr>
                                                         <td><?= $i ?></td>
-                                                        <td><?= $list->category_name ?></td>
-                                                        <td><?= $list->sub_category ?></td>
+                                                        <td><?= $list->cat_name ?></td>
+                                                        <td><?= $list->scat_name ?></td>
+                                                        <td><?= $list->prod_name ?></td>
+                                                        <td><?= $list->prod_act_price ?></td>
+                                                        <td><?= $list->prod_dist_price ?></td>
                                                         <td>
                                                             <ul class="list-inline">
                                                                 <li>
                                                                     <?php
-                                                                    $path = './uploads/blogs/thumb_admin/' . $list->image;
-                                                                    if ($list->image != "" && file_exists($path)) {
+                                                                    $path = './uploads/products/thumb_admin/' . $list->prod_image;
+                                                                    if ($list->prod_image != "" && file_exists($path)) {
                                                                     ?>
-                                                                        <img width="50" height="50" src="<?php echo base_url('uploads/blogs/thumb_admin/' . $list->image) ?>" class="rounded-circle" style="object-fit:cover" alt="BMR">
+                                                                        <img width="50" height="50" src="<?php echo base_url('uploads/products/thumb_admin/' . $list->prod_image) ?>" class="rounded-circle" style="object-fit:cover" alt="<?= $list->prod_name ?>">
                                                                     <?php } else { ?>
-                                                                        <img width="50" height="50" src="<?php echo base_url('uploads/blogs/thumb_admin/no-image.jpg') ?>" class="rounded-circle">
+                                                                        <img width="50" height="50" src="<?php echo base_url('uploads/products/thumb_admin/no-image.jpg') ?>" class="rounded-circle">
                                                                     <?php } ?>
                                                                 </li>
                                                             </ul>
                                                         </td>
-                                                        <td style="min-width:200px;"><?= $list->main_heading ?></td>
-                                                        <td><a href="#bmrModal" data-toggle="modal" data-id="<?= $list->id ?>" class="btn btn-info col">Add Images</a></td>
+                                                        <td><a href="#bmrModal" data-toggle="modal" data-id="<?= $list->prod_id ?>" class="btn btn-info col">Add Images</a></td>
                                                         <td>
-                                                            <a><?= $list->author ?></a>
+                                                            <a><?= $list->byteam ?></a>
                                                         </td>
-                                                        <td>
-                                                            <?php if (!empty($list->hm_banner)) { ?>
-                                                                <a href="<?= base_url('blogs_admin/hm_banner/0/blogs/') . $list->id ?>" class="btn btn-success btn-xs mb-2"><i class="fa fa-check"></i> Main Banner</a>
-                                                            <?php } else { ?>
-                                                                <a href="<?= base_url('blogs_admin/hm_banner/1/blogs/') . $list->id ?>" class="btn btn-danger btn-xs mb-2"><i class="fa fa-times"></i> Main Banner</a>
-                                                            <?php } ?>
-                                                            <?php if (!empty($list->hm_showcase)) { ?>
-                                                                <a href="<?= base_url('blogs_admin/hm_showcase/0/blogs/') . $list->id ?>" class="btn btn-success btn-xs mb-2"><i class="fa fa-check"></i> Story Showcase</a>
-                                                            <?php } else { ?>
-                                                                <a href="<?= base_url('blogs_admin/hm_showcase/1/blogs/') . $list->id ?>" class="btn btn-danger btn-xs mb-2"><i class="fa fa-times"></i> Story Showcase</a>
-                                                            <?php } ?>
-                                                            <?php if (!empty($list->month_story)) { ?>
-                                                                <a href="<?= base_url('blogs_admin/month_story/0/blogs/') . $list->id ?>" class="btn btn-success btn-xs mb-2"><i class="fa fa-check"></i> Story of the Month</a>
-                                                            <?php } else { ?>
-                                                                <a href="<?= base_url('blogs_admin/month_story/1/blogs/') . $list->id ?>" class="btn btn-danger btn-xs mb-2"><i class="fa fa-times"></i> Story of the Month</a>
-                                                            <?php } ?>
-                                                            <?php if (!empty($list->popular)) { ?>
-                                                                <a href="<?= base_url('blogs_admin/popular/0/blogs/') . $list->id ?>" class="btn btn-success btn-xs mb-2"><i class="fa fa-check"></i> Popular Stories</a>
-                                                            <?php } else { ?>
-                                                                <a href="<?= base_url('blogs_admin/popular/1/blogs/') . $list->id ?>" class="btn btn-danger btn-xs mb-2"><i class="fa fa-times"></i> Popular Stories</a>
-                                                            <?php } ?>
-                                                            <?php if (!empty($list->trending)) { ?>
-                                                                <a href="<?= base_url('blogs_admin/trending/0/blogs/') . $list->id ?>" class="btn btn-success btn-xs mb-2"><i class="fa fa-check"></i> Trending Stories</a>
-                                                            <?php } else { ?>
-                                                                <a href="<?= base_url('blogs_admin/trending/1/blogs/') . $list->id ?>" class="btn btn-danger btn-xs mb-2"><i class="fa fa-times"></i> Trending Stories</a>
-                                                            <?php } ?>
-                                                        </td>
-                                                        <td><?= date('Y-m-d', strtotime($list->added_on)) ?></td>
+                                                        <td><?= date('Y-m-d', strtotime($list->created)) ?></td>
                                                         <td>
                                                             <ul class="list-inline d-flex justify-content-end">
-                                                                <?php
+                                                            <?php
                                                                 if ($list->status == 1) {
                                                                 ?>
-                                                                    <li><a href="<?= base_url('private/blogs_admin/status/0/blogs/') . $list->id ?>" class="btn btn-success btn-xs">Active</a></li>
+                                                                    <li><a href="<?= base_url('private/admin/status/0/products/') . $list->prod_id . '/prod_id/status/products' ?>" class="btn btn-success btn-xs">Active</a></li>
                                                                 <?php
                                                                 } else {
                                                                 ?>
-                                                                    <li><a href="<?= base_url('private/blogs_admin/status/1/blogs/') . $list->id ?>" class="btn btn-warning btn-xs">Deactive</a></li>
+                                                                    <li><a href="<?= base_url('private/admin/status/1/products/') . $list->prod_id . '/prod_id/status/products'  ?>" class="btn btn-warning btn-xs">Deactive</a></li>
                                                                 <?php
                                                                 }
                                                                 ?>
-                                                                <li><a href="<?= base_url('accounts/edit_blog/' . $list->id) ?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a></li>
-                                                                <li><a href="javascript:void(0);" onclick="deleteBlog(<?= $list->id ?>)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a></li>
+                                                                <li><a href="<?= base_url('accounts/edit_product/' . $list->prod_id) ?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a></li>
+                                                                <li><a href="<?= base_url('private/product/delete/products/'. $list->prod_id.'/prod_id/products') ?>" onclick=" return confirm('Are you sure you want to delete this blog?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a></li>
                                                             </ul>
                                                         </td>
                                                     </tr>
@@ -156,13 +132,6 @@
             </div>
         </div>
     </div>
-    <script>
-        function deleteBlog(id) {
-            if (confirm("Are you sure you want to delete this blog?")) {
-                window.location.href = "<?= base_url('accounts/delete_blog/') ?>" + id;
-            }
-        }
-    </script>
     <script>
         $('#bmrModal').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget);

@@ -34,19 +34,11 @@
 					<div class="footer-box subscribe">
 						<h2 class="widget-title">Subscribe</h2>
 						<p>Subscribe to our mailing list to get the latest updates.</p>
-						<?php if ($this->session->flashdata('success')) { ?>
-							<p style="color:green"><?= $this->session->flashdata('success'); ?></p>
-						<?php } ?>
-
-						<!--error message -->
-						<?php if ($this->session->flashdata('error')) { ?>
-							<p style="color:red"><?= $this->session->flashdata('error'); ?></p>
-						<?php } ?>
-						<form method="POST" action="<?= base_url('home/newsltr') ?>" >
-
-							<input type="email" placeholder="Email" name="nswemail" id="nswemail" value="<?= set_value('nswemail') ?>">
-						<?= form_error('nswemail', "<p style='color:red'>", "</p>"); ?>
-							<button type="submit"><i class="fas fa-paper-plane"></i></button>
+						<div class="alert alert-danger print-error-msg text-danger" style="display:none"></div>
+						<div class="alert alert-success print-success-msg" style="display:none"></div>
+						<form method="POST" id="newsletter_form" enctype="multipart/form-data">
+							<input type="email" placeholder="Email" name="nswemail" id="nswemail" value="">
+							<button type="submit" name="submit" id="nitinid"><i class="fas fa-paper-plane"></i></button>
 						</form>
 					</div>
 				</div>
@@ -54,13 +46,13 @@
 		</div>
 	</div>
 	<!-- end footer -->
-	
+
 	<!-- copyright -->
 	<div class="copyright">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2022,  All Rights Reserved.<br>
+					<p>Copyrights &copy; 2022, All Rights Reserved.<br>
 						Distributed By - <a href="#">FruitKha</a>
 					</p>
 				</div>
@@ -79,3 +71,54 @@
 		</div>
 	</div>
 	<!-- end copyright -->
+
+	<!-- Logi Form -->
+
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header border-bottom-0">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="form-title text-center">
+						<h4>Login</h4>
+					</div>
+					<div class="d-flex flex-column text-center">
+					<div class="alert alert-danger error-msg text-danger" style="display:none"></div>
+						<div class="alert alert-success success-msg" style="display:none"></div>
+						<form method="POST" id="loginform" autocomplete="off" enctype="multipart/form-data">
+							<div class="form-group">
+								<input type="email" class="form-control" name="useremail" id="useremail" placeholder="Your email address...">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" name="userpassword" id="userpassword" placeholder="Your password...">
+							</div>
+							<div class="col-sm-6 form-group mx-auto">
+								<button type="submit" class="btn btn-info btn-block btn-round btn-lg mx-auto text-uppercase">Login</button>
+							</div>
+						</form>
+
+						<div class="text-center text-muted delimiter">or use a social network</div>
+						<div class="d-flex justify-content-center social-buttons">
+							<button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Twitter">
+								<i class="fab fa-twitter"></i>
+							</button>
+							<button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Facebook">
+								<i class="fab fa-facebook"></i>
+							</button>
+							<button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Linkedin">
+								<i class="fab fa-linkedin"></i>
+							</button>
+							</di>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer d-flex justify-content-center">
+					<div class="signup-section">Not a member yet? <a href="<?= base_url('user-registration') ?>" class="text-info"> Sign Up</a>.</div>
+				</div>
+			</div>
+		</div>
+	</div>

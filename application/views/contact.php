@@ -1,45 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
-
-	<!-- title -->
+	<meta name="description" content="Organic Vegitable, Fruites and Drifruits">
 	<title>Contact</title>
-
-
 	<?php include "inc-css.php" ?>
-
-
 </head>
 
 <body>
-
-
 	<?php include "header.php" ?>
 
-
-	<!-- search area -->
-	<div class="search-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<span class="close-btn"><i class="fas fa-window-close"></i></span>
-					<div class="search-bar">
-						<div class="search-bar-tablecell">
-							<h3>Search For:</h3>
-							<input type="text" placeholder="Keywords">
-							<button type="submit">Search <i class="fas fa-search"></i></button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end search arewa -->
 
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">
@@ -67,39 +39,45 @@
 					</div>
 					<div id="form_status"></div>
 					<div class="contact-form">
-						<?php if ($this->session->flashdata('success')) { ?>
-							<p style="color:green"><?php echo $this->session->flashdata('success'); ?></p>
+						<!--Success message -->
+
+						<?php if ($this->session->flashdata('csuccess')) { ?>
+							<p class="text-success"><?php echo $this->session->flashdata('csuccess'); ?></p>
 						<?php } ?>
 
 						<!--error message -->
-						<?php if ($this->session->flashdata('error')) { ?>
-							<p style="color:red"><?php echo $this->session->flashdata('error'); ?></p>
+						<?php if ($this->session->flashdata('conerror')) { ?>
+							<p class="text-danger"><?php echo $this->session->flashdata('conerror'); ?></p>
 						<?php } ?>
 						<!-- <form type="POST" id="fruitkha-contact" onSubmit="return valid_datas( this );"> -->
-						<form method="POST" id="fruitkha-contact" action="<?php base_url('contact') ?>">
-							<p>
-								<input type="text" placeholder="Name" name="name" id="name" value="<?= set_value('name') ?>">
-								<input type="email" placeholder="Email" name="email" id="email" value="<?= set_value('email') ?>">
-							</p>
-							<p>
-							<div class="row d-flex justify-content-around">
-								<?php echo form_error('name', "<div style='color:red'>", "</div>"); ?>
-								<?php echo form_error('email', "<div style='color:red'>", "</div>"); ?>
+						<form method="POST" id="fruitkha-contact" >
+							<div class="form-row mb-3">
+								<div class="col-sm-6 mb-2">
+									<input type="text" placeholder="Name" name="name" id="name" value="<?= set_value('name') ?>" class="form-control py-4 <?= (form_error('name') != "") ? 'is-invalid' : ''; ?>">
+									<?= form_error('name', "<span style='color:red'>", "</span>"); ?>
 								</div>
-							</p>
-							<p>
-								<input type="tel" placeholder="Phone" name="mobile" id="mobile" value="<?= set_value('mobile') ?>">
-								<input type="text" placeholder="Subject" name="subject" id="subject" value="<?= set_value('name') ?>">
-							</p>
-							<p>
-							<div class="row d-flex justify-content-around">
-								<?php echo form_error('mobile', "<div style='color:red'>", "</div>"); ?>
-								<?php echo form_error('subject', "<div style='color:red'>", "</div>"); ?>
+								<div class="col-sm-6 mb-2">
+									<input type="email" placeholder="Email" name="email" id="email" value="<?= set_value('email') ?>" class="form-control py-4 <?= (form_error('email') != "") ? 'is-invalid' : ''; ?>">
+									<?= form_error('email', "<span style='color:red'>", "</span>"); ?>
+								</div>
+								<div class="col-sm-6 mb-2">
+									<input type="tel" placeholder="Phone" name="mobile" id="mobile" value="<?= set_value('mobile') ?>" class="form-control py-4 <?= (form_error('mobile') != "") ? 'is-invalid' : ''; ?>">
+									<?= form_error('mobile', "<span style='color:red'>", "</span>"); ?>
+
+								</div>
+								<div class="col-sm-6 mb-2">
+									<input type="text" placeholder="Subject" name="subject" id="subject" value="<?= set_value('subject') ?>" class="form-control py-4 <?= (form_error('subject') != "") ? 'is-invalid' : ''; ?>">
+									<?= form_error('subject', "<span style='color:red'>", "</span>"); ?>
+								</div>
+								<div class="col-sm-12">
+									<textarea name="message" id="message" cols="30" rows="10" placeholder="Message" class="form-control" class=""><?= set_value('name') ?></textarea>
+								</div>
+
 							</div>
-							</p>
-							<p><textarea name="message" id="message" cols="30" rows="10" placeholder="Message"><?= set_value('name') ?></textarea></p>
+							<!-- <div class="row d-flex justify-content-around">
+							</div> -->
 							<input type="hidden" name="token" value="FsWga4&@f6aw" />
-							<p><input type="submit" value="Submit"></p>
+							<input type="submit" value="Submit" class="contact-submit">
 						</form>
 					</div>
 				</div>
@@ -141,13 +119,10 @@
 		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26432.42324808999!2d-118.34398767954286!3d34.09378509738966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bf07045279bf%3A0xf67a9a6797bdfae4!2sHollywood%2C%20Los%20Angeles%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1576846473265!5m2!1sen!2sbd" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" class="embed-responsive-item"></iframe>
 	</div>
 	<!-- end google map section -->
-
-
-
 	<?php include "footer.php" ?>
-
-
 	<?php include "inc-script.php" ?>
+
+
 
 
 </body>

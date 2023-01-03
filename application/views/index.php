@@ -1,43 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
-
-	<!-- title -->
-	<title>Fruitkha</title>
-
-	<?php include "inc-css.php" ?>
-
-
-</head>
-
-<body>
 
 	<?php include "header.php" ?>
-
-	<!-- search area -->
-	<div class="search-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<span class="close-btn"><i class="fas fa-window-close"></i></span>
-					<div class="search-bar">
-						<div class="search-bar-tablecell">
-							<h3>Search For:</h3>
-							<input type="text" placeholder="Keywords">
-							<button type="submit">Search <i class="fas fa-search"></i></button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end search area -->
-
 	<!-- hero area -->
 	<div class="hero-area hero-bg">
 		<div class="container">
@@ -116,36 +78,18 @@
 			</div>
 
 			<div class="row">
-				<div class="col-lg-4 col-md-6 text-center">
+			<?php foreach ($prod as $list) { ?>
+				<div class="col-lg-3 col-md-6 text-center">
 					<div class="single-product-item">
 						<div class="product-image">
-							<a href="<?= base_url('product') ?>"><img src=<?= base_url("assets/img/products/product-img-1.jpg")?> alt=""></a>
+							<a href="<?= base_url('product') ?>"><img src="<?php echo base_url("uploads/products/thumb_front/$list->prod_image") ?>" alt=""></a>
 						</div>
-						<h3>Strawberry</h3>
-						<p class="product-price"><span>Per Kg</span> 85$ </p>
-						<a href="<?= base_url('cart') ?>" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+						<h3><?= $list->scat_name ?></h3>
+								<p class="product-price"><span>$<?= $list->prod_dist_price ?>  /Kg </span> </p>
+						<a href="<?= base_url('cart') ?>" class="cart-btn" data-prodid="<?= $list->prod_id ?>"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6 text-center">
-					<div class="single-product-item">
-						<div class="product-image">
-							<a href="<?= base_url('product') ?>"><img src=<?= base_url("assets/img/products/product-img-2.jpg")?> alt=""></a>
-						</div>
-						<h3>Berry</h3>
-						<p class="product-price"><span>Per Kg</span> 70$ </p>
-						<a href="<?= base_url('cart') ?>" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
-					<div class="single-product-item">
-						<div class="product-image">
-							<a href="<?= base_url('product') ?>"><img src=<?= base_url("assets/img/products/product-img-3.jpg")?> alt=""></a>
-						</div>
-						<h3>Lemon</h3>
-						<p class="product-price"><span>Per Kg</span> 35$ </p>
-						<a href="<?= base_url('cart') ?>" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
+				<?php } ?>
 			</div>
 		</div>
 	</div>
@@ -301,49 +245,49 @@
 			<div class="row">
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
-						<a href="<?= base_url('single_news') ?>">
+						<a href="<?= base_url('single-news') ?>">
 							<div class="latest-news-bg news-bg-1"></div>
 						</a>
 						<div class="news-text-box">
-							<h3><a href="<?= base_url('single_news') ?>">You will vainly look for fruit on it in autumn.</a></h3>
+							<h3><a href="<?= base_url('single-news') ?>">You will vainly look for fruit on it in autumn.</a></h3>
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> Admin</span>
 								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
 							</p>
 							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-							<a href="<?= base_url('single_news') ?>" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
+							<a href="<?= base_url('single-news') ?>" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
-						<a href="<?= base_url('single_news') ?>">
+						<a href="<?= base_url('single-news') ?>">
 							<div class="latest-news-bg news-bg-2"></div>
 						</a>
 						<div class="news-text-box">
-							<h3><a href="<?= base_url('single_news') ?>">A man's worth has its season, like tomato.</a></h3>
+							<h3><a href="<?= base_url('single-news') ?>">A man's worth has its season, like tomato.</a></h3>
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> Admin</span>
 								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
 							</p>
 							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-							<a href="<?= base_url('single_news') ?>" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
+							<a href="<?= base_url('single-news') ?>" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
 					<div class="single-latest-news">
-						<a href="<?= base_url('single_news') ?>">
+						<a href="<?= base_url('single-news') ?>">
 							<div class="latest-news-bg news-bg-3"></div>
 						</a>
 						<div class="news-text-box">
-							<h3><a href="<?= base_url('single_news') ?>">Good thoughts bear good fresh juicy fruit.</a></h3>
+							<h3><a href="<?= base_url('single-news') ?>">Good thoughts bear good fresh juicy fruit.</a></h3>
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> Admin</span>
 								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
 							</p>
 							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-							<a href="<?= base_url('single_news') ?>" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
+							<a href="<?= base_url('single-news') ?>" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -357,33 +301,8 @@
 	</div>
 	<!-- end latest news -->
 
-	<!-- logo carousel -->
-	<div class="logo-carousel-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-				<div class="logo-carousel-inner">
-						<div class="single-logo-item">
-							<img src="<?= base_url('assets/img/company-logos/1.png') ?>" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="<?= base_url('assets/img/company-logos/2.png') ?>" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="<?= base_url('assets/img/company-logos/3.png') ?>" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="<?= base_url('assets/img/company-logos/4.png') ?>" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="<?= base_url('assets/img/company-logos/5.png') ?>" alt="">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end logo carousel -->
+	<?php include_once "inc-brandlogo.php" ?>
+
 
 	<?php include "footer.php" ?>
 	<?php include "inc-script.php" ?>

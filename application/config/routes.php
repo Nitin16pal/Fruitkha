@@ -54,15 +54,15 @@ $route['404_override'] = '404';
 
 // front ends pages
 
-$route['cart'] = 'home/cart';
-$route['checkout'] = 'home/checkout';
+$route['cart'] = 'product/cart';
+$route['checkout'] = 'product/checkout';
 $route['index_2'] = 'home/index_2';
 $route['contact'] = 'home/contact';
 $route['news'] = 'home/news';
 $route['product'] = 'home/product';
 $route['shop'] = 'home/shop';
-$route['signup'] = 'home/signup';
-$route['single_news'] = 'home/single_news';
+$route['user-registration'] = 'home/user_regstration';
+$route['single-news'] = 'home/single_news';
 $route['about'] = 'home/about';
 $route['newsltr'] = 'home/newsltr';
 $route['404'] = 'home/err404';
@@ -87,11 +87,19 @@ $route['accounts/sub_category'] = 'private/admin/sub_category';
 $route['accounts/add_subcategory'] = 'private/admin/add_sub_category';
 $route['accounts/edit_subcategory/(:num)'] = 'private/admin/add_sub_category/$1';
 
+$route['accounts/products'] = 'private/product/index';
 $route['accounts/add_product'] = 'private/product/add_product';
-$route['accounts/add_product/(:num)'] = 'private/product/add_product/$1';
-$route['accounts/products'] = 'private/product/';
+$route['accounts/edit_product/(:num)'] = 'private/product/add_product/$1';
 $route['accounts/getsubcat'] = 'private/product/getsubcat';
+$route['accounts/add_coupon'] = 'private/product/add_copun';
+$route['accounts/coupon'] = 'private/product/copun';
+$route['accounts/edit_coupon/(:num)'] = 'private/product/add_copun/$1';
 
+$route['accounts/blogs'] = 'private/Blogs_admin/index';
+$route['accounts/add_blogs'] = 'private/Blogs_admin/add_blog';
+$route['accounts/edit_blog/(:num)'] = 'private/Blogs_admin/add_blog/$1';
+
+$route['accounts/contact-enquiries'] = 'private/admin/contact_us';
 
 
 
